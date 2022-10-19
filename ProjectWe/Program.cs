@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IUsersService, UsersService>();
 
+builder.Services.AddAutoMapper(typeof(IUsersService));
+
 builder.Services.AddDbContext<_160020Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
