@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ProjectWe.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,10 @@ namespace ProjectWe.Services
         public MappingProfiles()
         {
             CreateMap<Database.User, Model.User>();
+            CreateMap<Database.Project, Model.Project>();
+
+            CreateMap<ProjectInsertRequest, Database.Project>();
+            CreateMap<ProjectUpdateRequest, Database.Project>();
         }
     }
 }

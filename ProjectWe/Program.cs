@@ -12,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IUsersService, UsersService>();
+builder.Services.AddTransient<IProjectsService, ProjectsService>();
 
 builder.Services.AddAutoMapper(typeof(IUsersService));
 
