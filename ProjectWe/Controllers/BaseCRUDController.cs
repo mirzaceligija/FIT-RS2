@@ -4,8 +4,6 @@ using ProjectWe.Services;
 
 namespace ProjectWe.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class BaseCRUDController<T, TSearch, TInsert, TUpdate> : BaseController<T, TSearch>
         where T : class where TSearch : class where TInsert : class where TUpdate : class
     {

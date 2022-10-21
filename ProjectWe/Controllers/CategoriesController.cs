@@ -7,9 +7,9 @@ using ProjectWe.Services;
 
 namespace ProjectWe.Controllers
 {
-    public class ProjectsController : BaseCRUDController<Project, ProjectSearchObject, ProjectInsertRequest, ProjectUpdateRequest>
+    public class CategoriesController : BaseCRUDController<Model.Category, CategorySearchObject, CategoryUpsertRequest, CategoryUpsertRequest>
     {
-        public ProjectsController(IProjectsService service) : base(service)
+        public CategoriesController(ICategoryService service) : base(service)
         {
         }
     }
