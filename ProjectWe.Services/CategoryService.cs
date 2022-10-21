@@ -25,11 +25,6 @@ namespace ProjectWe.Services
                 filteredQuery = filteredQuery.Where(s => s.Name == search.Name);
             }
 
-            if(search?.CategoryId.HasValue == true)
-            {
-                filteredQuery = filteredQuery.Where(x => x.CategoryId == search.CategoryId);
-            }
-
             return filteredQuery;
         }
     }

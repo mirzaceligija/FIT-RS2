@@ -22,8 +22,8 @@ namespace ProjectWe.Services.Database
         public string Email { get; set; } = null!;
         public string? Phone { get; set; }
         public string Username { get; set; } = null!;
-        public string LozinkaHash { get; set; } = null!;
-        public string LozinkaSalt { get; set; } = null!;
+        public string PasswordHash { get; set; } = null!;
+        public string PasswordSalt { get; set; } = null!;
         public DateTime? CreatedAt { get; set; }
         public DateTime? LastModified { get; set; }
 

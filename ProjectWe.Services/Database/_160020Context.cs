@@ -304,9 +304,9 @@ namespace ProjectWe.Services.Database
 
                 entity.Property(e => e.LastName).HasMaxLength(50);
 
-                entity.Property(e => e.LozinkaHash).HasMaxLength(50);
+                entity.Property(e => e.PasswordHash).HasMaxLength(50);
 
-                entity.Property(e => e.LozinkaSalt).HasMaxLength(50);
+                entity.Property(e => e.PasswordSalt).HasMaxLength(50);
 
                 entity.Property(e => e.Phone).HasMaxLength(20);
 

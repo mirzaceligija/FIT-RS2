@@ -1,25 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProjectWe.Model.Requests;
+using ProjectWe.Model.SearchObjects;
 using ProjectWe.Services;
 using ProjectWe.Services.Database;
 
 namespace ProjectWe.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseCRUDController<Model.User, UserSearchObject, UserInsertRequest, UserUpdateRequest>
     {
         private readonly IUsersService _Service;
 
-        public UsersController(IUsersService service)
+        public UsersController(IUsersService service) : base(service)
         {
-            _Service = service;
-        }
-
-        [HttpGet]
-        public IEnumerable<Model.User> Get()
-        {
-            return _Service.Get();
         }
     }
 }

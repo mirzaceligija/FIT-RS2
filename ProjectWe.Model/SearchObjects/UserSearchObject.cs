@@ -4,8 +4,7 @@ using System.Text;
 
 namespace ProjectWe.Model.SearchObjects
 {
-    public class CategorySearchObject : BaseSearchObject
+    public class UserSearchObject : BaseSearchObject
     {
-        public string Name { get; set; }
     }
 }
