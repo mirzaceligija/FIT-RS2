@@ -7,9 +7,9 @@ using ProjectWe.Services;
 
 namespace ProjectWe.API.Controllers
 {
-    public class OutputsController : BaseCRUDController<Model.Output, OutputSearchObject, OutputInsertRequest, OutputUpdateRequest>
+    public class BudgetsController : BaseCRUDController<Model.Budget, BudgetSearchObject, BudgetInsertRequest, BudgetUpdateRequest>
     {
-        public OutputsController(IOutputsService service) : base(service)
+        public BudgetsController(IBudgetsService service) : base(service)
         {
         }
     }

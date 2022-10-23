@@ -13,6 +13,8 @@ namespace ProjectWe.Model
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Username { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? LastModified { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
         public string RoleNames => string.Join(", ", UserRoles?.Select(x => x.Role?.Name)?.ToList());
     }

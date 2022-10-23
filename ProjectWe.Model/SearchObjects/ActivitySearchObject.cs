@@ -1,13 +1,13 @@
-﻿using ProjectWe.Model.SearchObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjectWe.Model
+namespace ProjectWe.Model.SearchObjects
 {
-    public class OutputSearchObject : BaseSearchObject
+    public class ActivitySearchObject : BaseSearchObject
     {
         public int ProjectId { get; set; }
         public int ObjectiveId { get; set; }
+        public int OutputId { get; set; }
     }
 }

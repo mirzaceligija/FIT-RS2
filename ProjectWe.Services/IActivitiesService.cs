@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectWe.Services
 {
-    public interface ICategoryService : ICRUDService<Model.Category, CategorySearchObject, CategoryUpsertRequest, CategoryUpsertRequest>
+    public interface IActivitiesService : ICRUDService<Model.Activity, ActivitySearchObject, ActivityInsertRequest, ActivityUpdateRequest>
     {
     }
 }

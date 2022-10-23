@@ -10,7 +10,7 @@ namespace ProjectWe.Controllers
 {
     public class CategoriesController : BaseCRUDController<Model.Category, CategorySearchObject, CategoryUpsertRequest, CategoryUpsertRequest>
     {
-        public CategoriesController(ICategoryService service) : base(service)
+        public CategoriesController(ICategoriesService service) : base(service)
         {
         }
 

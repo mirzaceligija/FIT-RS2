@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ProjectWe.Services
 {
-    public class CategoryService : BaseCRUDService<Model.Category, Database.Category, CategorySearchObject, CategoryUpsertRequest, CategoryUpsertRequest>, ICategoryService
+    public class CategoriesService : BaseCRUDService<Model.Category, Database.Category, CategorySearchObject, CategoryUpsertRequest, CategoryUpsertRequest>, ICategoriesService
     {
-        public CategoryService(_160020Context context, IMapper mapper) : base(context, mapper)
+        public CategoriesService(_160020Context context, IMapper mapper) : base(context, mapper)
         {
         }
 

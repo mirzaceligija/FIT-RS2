@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectWe.Services
 {
-    public interface IOutputsService : ICRUDService<Model.Output, OutputSearchObject, OutputInsertRequest, OutputUpdateRequest>
+    public interface ICategoriesService : ICRUDService<Model.Category, CategorySearchObject, CategoryUpsertRequest, CategoryUpsertRequest>
     {
     }
 }

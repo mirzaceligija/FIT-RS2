@@ -19,6 +19,8 @@ namespace ProjectWe.Services
             CreateMap<Database.Category, Model.Category>();
             CreateMap<Database.Objective, Model.Objective>();
             CreateMap<Database.Output, Model.Output>();
+            CreateMap<Database.Activity, Model.Activity>();
+            CreateMap<Database.Budget, Model.Budget>();
 
             CreateMap<CategoryUpsertRequest, Database.Category>();
             CreateMap<UserInsertRequest, Database.User>();
@@ -29,6 +31,10 @@ namespace ProjectWe.Services
             CreateMap<ObjectiveUpdateRequest, Database.Objective>();
             CreateMap<OutputInsertRequest, Database.Output>();
             CreateMap<OutputUpdateRequest, Database.Output>();
+            CreateMap<ActivityInsertRequest, Database.Activity>();
+            CreateMap<ActivityUpdateRequest, Database.Activity>();
+            CreateMap<BudgetInsertRequest, Database.Budget>();
+            CreateMap<BudgetUpdateRequest, Database.Budget>();
         }
     }
 }
