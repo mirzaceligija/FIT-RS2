@@ -5,13 +5,16 @@ using ProjectWe.Services.Database;
 using ProjectWe.Services.ProjectStateMachine;
 using Microsoft.OpenApi.Models;
 using ProjectWe;
+using ProjectWe.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers( config =>
+{
+    config.Filters.Add<ErrorFilter>();
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen( config =>
 {

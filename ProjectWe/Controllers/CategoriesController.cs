@@ -25,5 +25,18 @@ namespace ProjectWe.Controllers
         {
             return base.Get(id);
         }
+
+        [Authorize("Administrator")]
+        public override Category Insert([FromBody] CategoryUpsertRequest insert)
+        {
+            return base.Insert(insert);
+        }
+
+
+        [Authorize("Administrator")]
+        public override Category Update(int id, [FromBody] CategoryUpsertRequest insert)
+        {
+            return base.Update(id, insert);
+        }
     }
 }

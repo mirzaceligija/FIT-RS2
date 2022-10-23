@@ -24,6 +24,7 @@ namespace ProjectWe.Services
         {
             var entity = Context.Set<TDb>().AsQueryable();
             entity = AddFilter(entity, search);
+            entity = AddInclude(entity, search);
 
             if(search?.Page.HasValue == true && search?.PageSize.HasValue == true)
             {
@@ -34,17 +35,22 @@ namespace ProjectWe.Services
             return Mapper.Map<IList<T>>(list);
         }
 
-        public virtual IQueryable<TDb> AddFilter(IQueryable<TDb> query, TSearch search = null)
-        {
-            return query;
-        }
-
         public virtual T Get(int id)
         {
             var set = Context.Set<TDb>();
             var entity = set.Find(id);
 
             return Mapper.Map<T>(entity);
+        }
+
+        public virtual IQueryable<TDb> AddFilter(IQueryable<TDb> query, TSearch search = null)
+        {
+            return query;
+        }
+
+        public virtual IQueryable<TDb> AddInclude(IQueryable<TDb> query, TSearch search = null)
+        {
+            return query;
         }
     }
 }

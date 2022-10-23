@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using ProjectWe.Model;
 using ProjectWe.Model.Requests;
 using ProjectWe.Model.SearchObjects;
 using ProjectWe.Services.Database;
@@ -20,6 +21,11 @@ namespace ProjectWe.Services
 
         public override Model.User Insert(UserInsertRequest insert)
         {
+            if(insert.Password != insert.ConfirmPassword)
+            {
+                throw new UserException("Password confirmation did not match the password!");
+            }
+
             var entity = base.Insert(insert);
 
             foreach (var roleId in insert.RolesIdList)
@@ -39,7 +45,7 @@ namespace ProjectWe.Services
             return entity;
         }
 
-        public override void BeforeInsert(UserInsertRequest insert, User entity)
+        public override void BeforeInsert(UserInsertRequest insert, Database.User entity)
         {
             var salt = GenerateSalt();
             entity.PasswordSalt = salt;
@@ -69,7 +75,7 @@ namespace ProjectWe.Services
             return Convert.ToBase64String(inArray);
         }
 
-        public override IQueryable<User> AddFilter(IQueryable<User> query, UserSearchObject search = null)
+        public override IQueryable<Database.User> AddFilter(IQueryable<Database.User> query, UserSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
 
@@ -84,6 +90,16 @@ namespace ProjectWe.Services
             }
 
             return filteredQuery;
+        }
+
+        public override IQueryable<Database.User> AddInclude(IQueryable<Database.User> query, UserSearchObject search = null)
+        {
+            if (search?.IncludeRoles == true)
+            {
+                query = query.Include("KorisniciUloges.Uloga");
+            }
+
+            return query;
         }
 
         public Model.User Login(string username, string password)

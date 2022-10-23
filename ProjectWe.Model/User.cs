@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ProjectWe.Model
@@ -13,5 +14,6 @@ namespace ProjectWe.Model
         public string Phone { get; set; }
         public string Username { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
+        public string RoleNames => string.Join(", ", UserRoles?.Select(x => x.Role?.Name)?.ToList());
     }
 }
