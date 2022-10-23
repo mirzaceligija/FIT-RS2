@@ -40,6 +40,7 @@ builder.Services.AddTransient<IUsersService, UsersService>();
 builder.Services.AddTransient<IProjectsService, ProjectsService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IObjectivesService, ObjectivesService>();
+builder.Services.AddTransient<IOutputsService, OutputsService>();
 
 builder.Services.AddTransient<BaseState>();
 builder.Services.AddTransient<InitialProjectState>();

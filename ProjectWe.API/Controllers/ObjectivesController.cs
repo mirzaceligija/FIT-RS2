@@ -8,8 +8,6 @@ using ProjectWe.Services;
 
 namespace ProjectWe.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class ObjectivesController : BaseCRUDController<Model.Objective, ObjectiveSearchObject, ObjectiveInsertRequest, ObjectiveUpdateRequest>
     {
         public ObjectivesController(IObjectivesService service) : base(service)

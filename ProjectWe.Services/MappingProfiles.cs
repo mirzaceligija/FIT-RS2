@@ -18,12 +18,17 @@ namespace ProjectWe.Services
             CreateMap<Database.Project, Model.Project>();
             CreateMap<Database.Category, Model.Category>();
             CreateMap<Database.Objective, Model.Objective>();
+            CreateMap<Database.Output, Model.Output>();
 
             CreateMap<CategoryUpsertRequest, Database.Category>();
             CreateMap<UserInsertRequest, Database.User>();
             CreateMap<UserUpdateRequest, Database.User>();
             CreateMap<ProjectInsertRequest, Database.Project>();
             CreateMap<ProjectUpdateRequest, Database.Project>();
+            CreateMap<ObjectiveInsertRequest, Database.Objective>();
+            CreateMap<ObjectiveUpdateRequest, Database.Objective>();
+            CreateMap<OutputInsertRequest, Database.Output>();
+            CreateMap<OutputUpdateRequest, Database.Output>();
         }
     }
 }
