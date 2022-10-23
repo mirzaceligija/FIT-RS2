@@ -11,5 +11,7 @@ namespace ProjectWe.Services
 {
     public interface IProjectsService : ICRUDService<Model.Project, ProjectSearchObject, ProjectInsertRequest, ProjectUpdateRequest>
     {
+        Model.Project Activate(int id);
+        List<string> AllowedActions(int id);
     }
 }

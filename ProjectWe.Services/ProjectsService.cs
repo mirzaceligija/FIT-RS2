@@ -2,6 +2,7 @@
 using ProjectWe.Model.Requests;
 using ProjectWe.Model.SearchObjects;
 using ProjectWe.Services.Database;
+using ProjectWe.Services.ProjectStateMachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,8 +15,11 @@ namespace ProjectWe.Services
     public class ProjectsService : BaseCRUDService<Model.Project, Database.Project, ProjectSearchObject, ProjectInsertRequest, ProjectUpdateRequest>,
         IProjectsService
     {
-        public ProjectsService(_160020Context context, IMapper mapper) : base(context, mapper)
+        public BaseState BaseState { get; set; }
+
+        public ProjectsService(_160020Context context, IMapper mapper, BaseState baseState) : base(context, mapper)
         {
+            BaseState = baseState;
         }
 
         public override IEnumerable<Model.Project> GetList(ProjectSearchObject search = null)
@@ -38,6 +42,42 @@ namespace ProjectWe.Services
             }
 
             return filteredQuery;
+        }
+
+        public override Model.Project Insert(ProjectInsertRequest insert)
+        {
+            var state = BaseState.CreateState("initial");
+            return state.Insert(insert);
+        }
+
+        public override Model.Project Update(int id, ProjectUpdateRequest update)
+        {
+            var project = Context.Projects.Find(id);
+
+            var state = BaseState.CreateState(project.StateMachine);
+            state.CurrentEntity = project;
+            state.Update(update);
+
+            return Get(id);
+        }
+
+        public Model.Project Activate(int id)
+        {
+            var project = Context.Projects.Find(id);
+
+            var state = BaseState.CreateState(project.StateMachine);
+            state.CurrentEntity = project;
+            state.Activate();
+
+            return Get(id);
+        }
+
+        public List<string> AllowedActions(int id)
+        {
+            var product = Get(id);
+            var state = BaseState.CreateState(product.StateMachine);
+
+            return state.AllowedActions();
         }
     }
 }

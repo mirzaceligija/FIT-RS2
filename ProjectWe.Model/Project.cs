@@ -14,5 +14,6 @@ namespace ProjectWe.Model
         public int UserId { get; set; }
         public int StatusId { get; set; }
         public int CategoryId { get; set; }
+        public string StateMachine { get; set; }
     }
 }

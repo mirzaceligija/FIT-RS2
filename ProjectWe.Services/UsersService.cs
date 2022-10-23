@@ -48,8 +48,10 @@ namespace ProjectWe.Services
 
         public static string GenerateSalt()
         {
-            // Temp solution
-            return Convert.ToBase64String(new byte[16]);
+            RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+            var byteArray = new byte[16];
+            provider.GetBytes(byteArray);
+            return Convert.ToBase64String(byteArray);
         }
 
         public static string GenerateHash(string salt, string password)

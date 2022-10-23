@@ -22,6 +22,7 @@ namespace ProjectWe.Services.Database
         public int UserId { get; set; }
         public int StatusId { get; set; }
         public int CategoryId { get; set; }
+        public string StateMachine { get; set; }
 
         public virtual Category Category { get; set; } = null!;
         public virtual Status Status { get; set; } = null!;

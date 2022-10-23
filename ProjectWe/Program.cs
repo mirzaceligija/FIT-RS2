@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectWe.Services;
 using ProjectWe.Services.Database;
+using ProjectWe.Services.ProjectStateMachine;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IUsersService, UsersService>();
 builder.Services.AddTransient<IProjectsService, ProjectsService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+
+builder.Services.AddTransient<BaseState>();
+builder.Services.AddTransient<InitialProjectState>();
+builder.Services.AddTransient<DraftProjectState>();
+builder.Services.AddTransient<ActiveProjectState>();
 
 builder.Services.AddAutoMapper(typeof(IUsersService));
 

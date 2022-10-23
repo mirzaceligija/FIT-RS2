@@ -35,7 +35,7 @@ namespace ProjectWe.Services
         {
         }
 
-        public T Update(int id, TUpdate update)
+        public virtual T Update(int id, TUpdate update)
         {
             var set = Context.Set<TDb>();
             var entity = set.Find(id);
