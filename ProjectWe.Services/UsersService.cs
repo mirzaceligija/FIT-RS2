@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ProjectWe.Model.Requests;
 using ProjectWe.Model.SearchObjects;
 using ProjectWe.Services.Database;
@@ -66,6 +67,41 @@ namespace ProjectWe.Services
             HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
             byte[] inArray = algorithm.ComputeHash(dst);
             return Convert.ToBase64String(inArray);
+        }
+
+        public override IQueryable<User> AddFilter(IQueryable<User> query, UserSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
+
+            if (!string.IsNullOrWhiteSpace(search?.Username))
+            {
+                filteredQuery = filteredQuery.Where(x => x.Username == search.Username);
+            }
+
+            if (!string.IsNullOrWhiteSpace(search?.Email))
+            {
+                filteredQuery = filteredQuery.Where(x => x.Email == search.Email);
+            }
+
+            return filteredQuery;
+        }
+
+        public Model.User Login(string username, string password)
+        {
+            var entity = Context.Users.Include("UserRoles.Role").FirstOrDefault(x => x.Username == username);
+            if (entity == null)
+            {
+                return null;
+            }
+
+            var hash = GenerateHash(entity.PasswordSalt, password);
+
+            if (hash != entity.PasswordHash)
+            {
+                return null;
+            }
+
+            return Mapper.Map<Model.User>(entity);
         }
     }
 }

@@ -11,5 +11,6 @@ namespace ProjectWe.Services
 {
     public interface IUsersService : ICRUDService<Model.User, UserSearchObject, UserInsertRequest, UserUpdateRequest>
     {
+        Model.User Login(string username, string password);
     }
 }

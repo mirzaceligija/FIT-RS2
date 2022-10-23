@@ -13,6 +13,8 @@ namespace ProjectWe.Services
         public MappingProfiles()
         {
             CreateMap<Database.User, Model.User>();
+            CreateMap<Database.UserRole, Model.UserRole>();
+            CreateMap<Database.Role, Model.Role>();
             CreateMap<Database.Project, Model.Project>();
             CreateMap<Database.Category, Model.Category>();
 
