@@ -17,6 +17,7 @@ namespace ProjectWe.Services
             CreateMap<Database.Role, Model.Role>();
             CreateMap<Database.Project, Model.Project>();
             CreateMap<Database.Category, Model.Category>();
+            CreateMap<Database.Objective, Model.Objective>();
 
             CreateMap<CategoryUpsertRequest, Database.Category>();
             CreateMap<UserInsertRequest, Database.User>();

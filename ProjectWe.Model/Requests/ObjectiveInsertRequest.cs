@@ -4,12 +4,11 @@ using System.Text;
 
 namespace ProjectWe.Model.Requests
 {
-    public class ProjectUpdateRequest
+    public class ObjectiveInsertRequest
     {
-        public string Name { get; set; }
+        public string ObjectiveNumber { get; set; }
         public string Description { get; set; }
         public int UserId { get; set; }
-        public int StatusId { get; set; }
-        public int CategoryId { get; set; }
+        public int ProjectId { get; set; }
     }
 }

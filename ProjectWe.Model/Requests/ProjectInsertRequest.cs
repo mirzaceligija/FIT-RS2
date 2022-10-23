@@ -6,7 +6,6 @@ namespace ProjectWe.Model.Requests
 {
     public class ProjectInsertRequest
     {
-        public int ProjectId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int UserId { get; set; }
