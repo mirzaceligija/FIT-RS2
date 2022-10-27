@@ -1,0 +1,36 @@
+version: '3'
+services:
+#mssql docker
+  projectwe-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWErty123!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    expose:
+        - 1433
+    networks:
+      - projectwenetwork
+
+  projectwe-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=projectwe-sql,1433;Database=160020;User=sa;Password=QWErty123!;ConnectRetryCount=0
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5192:5192
+    networks:
+      - projectwenetwork
+    links:
+      - projectwe-sql
+    depends_on:
+      - projectwe-sql
+      
+networks:
+  projectwenetwork:
+    driver: bridge   

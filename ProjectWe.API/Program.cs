@@ -58,7 +58,6 @@ builder.Services.AddDbContext<_160020Context>(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -69,5 +68,15 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+//TODO:Add initial migration
+//COMMAND: package manager console -> add-migration Initial
+/*
+using (var scope = app.Services.CreateScope())
+{
+    var dataContext = scope.ServiceProvider.GetRequiredService<_160020Context>();
+    dataContext.Database.Migrate();
+}
+*/
 
 app.Run();

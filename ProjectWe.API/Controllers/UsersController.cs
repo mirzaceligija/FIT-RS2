@@ -9,7 +9,6 @@ namespace ProjectWe.Controllers
 {
     public class UsersController : BaseCRUDController<Model.User, UserSearchObject, UserInsertRequest, UserUpdateRequest>
     {
-        private readonly IUsersService _Service;
 
         public UsersController(IUsersService service) : base(service)
         {
