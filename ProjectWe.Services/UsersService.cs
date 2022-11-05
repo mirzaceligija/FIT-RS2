@@ -28,7 +28,9 @@ namespace ProjectWe.Services
 
             var entity = base.Insert(insert);
 
-            foreach (var roleId in insert.RolesIdList)
+            List<int> defaultRoles = new List<int> { 1 };
+
+            foreach (var roleId in defaultRoles)
             {
                 Database.UserRole role = new Database.UserRole();
 
