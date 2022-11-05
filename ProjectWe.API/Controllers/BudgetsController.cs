@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWe.Controllers;
 using ProjectWe.Model.Requests;
@@ -11,6 +12,24 @@ namespace ProjectWe.API.Controllers
     {
         public BudgetsController(IBudgetsService service) : base(service)
         {
+        }
+
+        [Authorize("Manager")]
+        public override Model.Budget Get(int id)
+        {
+            return base.Get(id);
+        }
+
+        [Authorize("Manager")]
+        public override Model.Budget Insert([FromBody] BudgetInsertRequest insert)
+        {
+            return base.Insert(insert);
+        }
+
+        [Authorize("Manager")]
+        public override Model.Budget Update(int id, [FromBody] BudgetUpdateRequest update)
+        {
+            return base.Update(id, update);
         }
     }
 }

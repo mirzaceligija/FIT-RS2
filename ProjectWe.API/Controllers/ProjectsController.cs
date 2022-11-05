@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWe.Model;
 using ProjectWe.Model.Requests;
@@ -15,6 +16,19 @@ namespace ProjectWe.Controllers
             ProjectsService = service;
         }
 
+        [Authorize("Manager")]
+        public override Model.Project Insert([FromBody] ProjectInsertRequest insert)
+        {
+            return base.Insert(insert);
+        }
+
+        [Authorize("Manager")]
+        public override Model.Project Update(int id, [FromBody] ProjectUpdateRequest update)
+        {
+            return base.Update(id, update);
+        }
+
+        [Authorize("Administrator")]
         [HttpPut("{id}/Activate")]
         public Model.Project Activate(int id)
         {

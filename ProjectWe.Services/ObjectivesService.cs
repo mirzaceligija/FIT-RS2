@@ -15,5 +15,11 @@ namespace ProjectWe.Services
         public ObjectivesService(_160020Context context, IMapper mapper) : base(context, mapper)
         {
         }
+
+        public override void BeforeInsert(ObjectiveInsertRequest insert, Database.Objective entity)
+        {
+            entity.UserId = 1;
+            base.BeforeInsert(insert, entity);
+        }
     }
 }

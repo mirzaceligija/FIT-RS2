@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWe.Controllers;
 using ProjectWe.Model;
@@ -12,6 +13,24 @@ namespace ProjectWe.API.Controllers
     {
         public ObjectivesController(IObjectivesService service) : base(service)
         {
+        }
+
+        [Authorize("Manager")]
+        public override Objective Get(int id)
+        {
+            return base.Get(id);
+        }
+
+        [Authorize("Manager")]
+        public override Objective Insert([FromBody] ObjectiveInsertRequest insert)
+        {
+            return base.Insert(insert);
+        }
+
+        [Authorize("Manager")]
+        public override Objective Update(int id, [FromBody] ObjectiveUpdateRequest update)
+        {
+            return base.Update(id, update);
         }
     }
 }

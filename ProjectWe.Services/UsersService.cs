@@ -96,7 +96,7 @@ namespace ProjectWe.Services
         {
             if (search?.IncludeRoles == true)
             {
-                query = query.Include("KorisniciUloges.Uloga");
+                query = query.Include("UserRoles.Role");
             }
 
             return query;
