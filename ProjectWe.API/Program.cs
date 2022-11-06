@@ -43,6 +43,7 @@ builder.Services.AddTransient<IObjectivesService, ObjectivesService>();
 builder.Services.AddTransient<IOutputsService, OutputsService>();
 builder.Services.AddTransient<IActivitiesService, ActivitiesService>();
 builder.Services.AddTransient<IBudgetsService, BudgetsService>();
+builder.Services.AddTransient<ICitiesService, CitiesService>();
 
 builder.Services.AddTransient<BaseState>();
 builder.Services.AddTransient<InitialProjectState>();

@@ -24,6 +24,7 @@ namespace ProjectWe.Services.Database
         public virtual DbSet<Project> Projects { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Status> Statuses { get; set; } = null!;
+        public virtual DbSet<City> Cities { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<UserRole> UserRoles { get; set; } = null!;
         public virtual DbSet<Vote> Votes { get; set; } = null!;
@@ -272,6 +273,15 @@ namespace ProjectWe.Services.Database
                 entity.Property(e => e.Description).HasMaxLength(255);
 
                 entity.Property(e => e.LastModified).HasColumnType("datetime");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<City>(entity =>
+            {
+                entity.Property(e => e.CityId).HasColumnName("CityId");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)

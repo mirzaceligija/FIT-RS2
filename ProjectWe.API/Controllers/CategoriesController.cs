@@ -14,18 +14,6 @@ namespace ProjectWe.Controllers
         {
         }
 
-        [AllowAnonymous]
-        public override IEnumerable<Category> GetList([FromQuery] CategorySearchObject search = null)
-        {
-            return base.GetList(search);
-        }
-
-        [AllowAnonymous]
-        public override Category Get(int id)
-        {
-            return base.Get(id);
-        }
-
         [Authorize("Administrator")]
         public override Category Insert([FromBody] CategoryUpsertRequest insert)
         {

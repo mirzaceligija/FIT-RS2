@@ -21,6 +21,7 @@ namespace ProjectWe.Services
             CreateMap<Database.Output, Model.Output>();
             CreateMap<Database.Activity, Model.Activity>();
             CreateMap<Database.Budget, Model.Budget>();
+            CreateMap<Database.City, Model.City>();
 
             CreateMap<CategoryUpsertRequest, Database.Category>();
             CreateMap<UserInsertRequest, Database.User>();
@@ -35,6 +36,7 @@ namespace ProjectWe.Services
             CreateMap<ActivityUpdateRequest, Database.Activity>();
             CreateMap<BudgetInsertRequest, Database.Budget>();
             CreateMap<BudgetUpdateRequest, Database.Budget>();
+            CreateMap<CityUpsertRequest, Database.City>();
         }
     }
 }
