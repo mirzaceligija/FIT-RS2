@@ -289,7 +289,7 @@ namespace ProjectWe.Services.Database
 
             modelBuilder.Entity<City>(entity =>
             {
-                entity.Property(e => e.CityId).HasColumnName("CityId");
+                entity.Property(e => e.CityId).HasColumnName("CityID");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)

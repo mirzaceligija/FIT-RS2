@@ -178,7 +178,7 @@ namespace ProjectWe.Services.Migrations
                     b.Property<int>("CityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("CityId");
+                        .HasColumnName("CityID");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CityId"), 1L, 1);
 

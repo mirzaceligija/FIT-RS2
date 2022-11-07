@@ -29,13 +29,13 @@ namespace ProjectWe.Services.Migrations
                 name: "Cities",
                 columns: table => new
                 {
-                    CityId = table.Column<int>(type: "int", nullable: false)
+                    CityID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cities", x => x.CityId);
+                    table.PrimaryKey("PK_Cities", x => x.CityID);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,7 +119,7 @@ namespace ProjectWe.Services.Migrations
                         name: "FK__Projects__City__60A75C0D",
                         column: x => x.CityID,
                         principalTable: "Cities",
-                        principalColumn: "CityId");
+                        principalColumn: "CityID");
                     table.ForeignKey(
                         name: "FK__Projects__Status__60A75C0F",
                         column: x => x.StatusID,

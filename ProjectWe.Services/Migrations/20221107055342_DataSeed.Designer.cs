@@ -12,8 +12,8 @@ using ProjectWe.Services.Database;
 namespace ProjectWe.Services.Migrations
 {
     [DbContext(typeof(_160020Context))]
-    [Migration("20221106091044_Initial")]
-    partial class Initial
+    [Migration("20221107055342_DataSeed")]
+    partial class DataSeed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
