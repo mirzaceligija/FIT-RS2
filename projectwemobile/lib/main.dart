@@ -1,9 +1,24 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-void main() => runApp(MaterialApp(
-      debugShowCheckedModeBanner: true,
-      home: HomePage(),
-    ));
+import 'package:flutter/material.dart';
+import 'package:projectwemobile/provider/project_provider.dart';
+import 'package:projectwemobile/screens/projects/project_list_screen.dart';
+import 'package:provider/provider.dart';
+
+void main() => runApp(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ProjectProvider()),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: true,
+          home: HomePage(),
+          onGenerateRoute: ((settings) {
+            if (settings.name == ProjectListScreen.routeName) {
+              return MaterialPageRoute(
+                  builder: ((context) => ProjectListScreen()));
+            }
+          }),
+        )));
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,6 +27,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
           title: Text("Project We"),
         ),
         body: SingleChildScrollView(
@@ -25,7 +41,7 @@ class HomePage extends StatelessWidget {
                         padding: EdgeInsets.all(40),
                         child: (Text("Login",
                             style: TextStyle(
-                                color: Colors.blue,
+                                color: Colors.deepPurple,
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold)))),
                     Container(
@@ -36,15 +52,39 @@ class HomePage extends StatelessWidget {
                         child: TextField(
                       decoration: InputDecoration(hintText: "Password"),
                     )),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        minimumSize: const Size.fromHeight(50),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(fontSize: 16),
+                    Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.fromLTRB(40, 40, 40, 0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.amber),
+                      child: InkWell(
+                        onTap: () async {
+                          try {
+                            //Authorization.username = _usernameController.text;
+                            //Authorization.password = _passwordController.text;
+
+                            //await _userProvider.get();
+                            Navigator.pushNamed(
+                                context, ProjectListScreen.routeName);
+                          } catch (e) {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: Text("Error"),
+                                      content: Text(e.toString()),
+                                      actions: [
+                                        TextButton(
+                                          child: Text("Ok"),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                        )
+                                      ],
+                                    ));
+                          }
+                        },
+                        child: Center(child: Text("Login")),
                       ),
                     ),
                     Padding(
