@@ -228,6 +228,8 @@ namespace ProjectWe.Services.Database
 
                 entity.Property(e => e.StatusId).HasColumnName("StatusID");
 
+                entity.Property(e => e.CityId).HasColumnName("CityID");
+
                 entity.Property(e => e.UserId).HasColumnName("UserID");
 
                 entity.HasOne(d => d.Category)
@@ -241,6 +243,12 @@ namespace ProjectWe.Services.Database
                     .HasForeignKey(d => d.StatusId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Projects__Status__60A75C0F");
+
+                entity.HasOne(d => d.City)
+                    .WithMany(p => p.Projects)
+                    .HasForeignKey(d => d.CityId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Projects__City__60A75C0D");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Projects)

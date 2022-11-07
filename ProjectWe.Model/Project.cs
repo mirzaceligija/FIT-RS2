@@ -13,6 +13,7 @@ namespace ProjectWe.Model
         public DateTime? LastModified { get; set; }
         public int UserId { get; set; }
         public int StatusId { get; set; }
+        public int CityId { get; set; }
         public int CategoryId { get; set; }
         public string StateMachine { get; set; }
     }

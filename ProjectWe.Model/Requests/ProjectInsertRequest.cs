@@ -10,6 +10,7 @@ namespace ProjectWe.Model.Requests
         public string Description { get; set; }
         public int UserId { get; set; }
         public int StatusId { get; set; }
+        public int CityId { get; set; }
         public int CategoryId { get; set; }
     }
 }

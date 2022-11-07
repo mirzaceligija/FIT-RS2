@@ -21,11 +21,13 @@ namespace ProjectWe.Services.Database
         public DateTime? LastModified { get; set; }
         public int UserId { get; set; }
         public int StatusId { get; set; }
+        public int CityId { get; set; }
         public int CategoryId { get; set; }
         public string StateMachine { get; set; }
 
         public virtual Category Category { get; set; } = null!;
         public virtual Status Status { get; set; } = null!;
+        public virtual City City { get; set; } = null!;
         public virtual User User { get; set; } = null!;
         public virtual ICollection<Activity> Activities { get; set; }
         public virtual ICollection<Budget> Budgets { get; set; }
