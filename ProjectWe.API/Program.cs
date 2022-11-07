@@ -54,6 +54,20 @@ builder.Services.AddAutoMapper(typeof(IUsersService));
 builder.Services.AddAuthentication("BasicAuthentication")
     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Administrator",
+    authBuilder =>
+    {
+        authBuilder.RequireRole("Administrator");
+    });
+    options.AddPolicy("Manager",
+        authBuilder =>
+        {
+            authBuilder.RequireRole("Manager");
+        });
+});
+
 builder.Services.AddDbContext<_160020Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -70,14 +84,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-//TODO:Add initial migration
-//COMMAND: package manager console -> add-migration Initial
-/*
+
 using (var scope = app.Services.CreateScope())
 {
     var dataContext = scope.ServiceProvider.GetRequiredService<_160020Context>();
     dataContext.Database.Migrate();
 }
-*/
 
 app.Run();
