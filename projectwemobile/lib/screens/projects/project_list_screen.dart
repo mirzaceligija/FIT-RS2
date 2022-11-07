@@ -34,12 +34,17 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
+          title: Text("Projects"),
+        ),
         body: SafeArea(
             child: SingleChildScrollView(
       child: Container(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          _buildHeader(),
           Container(
               height: 200,
               child: GridView(
@@ -54,6 +59,13 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
         ],
       )),
     )));
+  }
+
+   Widget _buildHeader() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Text("Projects", style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),),
+    );
   }
 
   List<Widget> _buildProjectCardList() {
