@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:projectwemobile/provider/project_provider.dart';
+import 'package:projectwemobile/screens/projects/project_details_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/project.dart';
+import '../../widgets/master_screen.dart';
 
 class ProjectListScreen extends StatefulWidget {
   static const String routeName = "/project";
@@ -16,6 +18,7 @@ class ProjectListScreen extends StatefulWidget {
 class _ProjectListScreenState extends State<ProjectListScreen> {
   ProjectProvider? _projectProvider = null;
   List<Project> data = [];
+  TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -25,7 +28,7 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
   }
 
   Future loadData() async {
-    var tempData = await _projectProvider?.get(null);
+    var tempData = await _projectProvider?.getList(null);
     setState(() {
       data = tempData!;
     });
@@ -33,38 +36,76 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: Text("Projects"),
-        ),
-        body: SafeArea(
-            child: SingleChildScrollView(
-      child: Container(
+    return MasterScreenWidget(
+      child: SingleChildScrollView(
+        child: Container(
           child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildHeader(),
-          Container(
-              height: 200,
-              child: GridView(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1,
-                    childAspectRatio: 4 / 3,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 30),
-                scrollDirection: Axis.horizontal,
-                children: _buildProjectCardList(),
-              ))
-        ],
-      )),
-    )));
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(),
+              _buildProjectSearch(),
+              Container(
+                height: 200,
+                child: GridView(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1,
+                      childAspectRatio: 4 / 3,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 30),
+                  scrollDirection: Axis.horizontal,
+                  children: _buildProjectCardList(),
+                ),
+              )
+            ],
+          ),
+        ),
+      )
+    );
   }
 
    Widget _buildHeader() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Text("Projects", style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),),
+    );
+  }
+
+   Widget _buildProjectSearch() {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: TextField(
+              controller: _searchController,
+              onSubmitted: (value) async {
+                var tmpData = await _projectProvider?.getList({'name': value});
+                setState(() {
+                  data = tmpData!;
+                });
+              },
+              decoration: InputDecoration(
+                  hintText: "Search",
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey))),
+            ),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: IconButton(
+            icon: Icon(Icons.filter_list),
+            onPressed: () async {
+                var tmpData = await _projectProvider?.getList({'name': _searchController.text});
+                setState(() {
+                  data = tmpData!;
+                });
+            },
+          ),
+        )
+      ],
     );
   }
 
@@ -77,8 +118,17 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
         .map((x) => Container(
               child: Column(
                 children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "${ProjectDetailsScreen.routeName}/${x.projectId}");
+                    },
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      child: Text("Hello"),
+                    ),
+                  ),
                   Text(x.name ?? ""),
-                  Text(x.description ?? "")
                 ],
               ),
             ))
