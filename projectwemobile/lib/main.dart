@@ -1,12 +1,14 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:projectwemobile/provider/project_provider.dart';
-import 'package:projectwemobile/provider/user_provider.dart';
-import 'package:projectwemobile/screens/account/account_details.dart';
-import 'package:projectwemobile/screens/projects/project_details_screen.dart';
-import 'package:projectwemobile/screens/projects/project_list_screen.dart';
-import 'package:projectwemobile/utils/utils.dart';
+import 'package:projectwemobile/src/features/projects/controllers/project_provider.dart';
+import 'package:projectwemobile/src/features/projects/controllers/user_provider.dart';
+import 'package:projectwemobile/src/features/authentication/screens/on_boarding/on_boarding_screen.dart';
+import 'package:projectwemobile/src/features/authentication/screens/welcome/welcome_screen.dart';
+import 'package:projectwemobile/src/features/projects/screens/project_details_screen.dart';
+import 'package:projectwemobile/src/features/projects/screens/project_list_screen.dart';
+import 'package:projectwemobile/src/utils/theme/theme.dart';
+import 'package:projectwemobile/src/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(
@@ -15,14 +17,8 @@ void main() => runApp(MultiProvider(
           ChangeNotifierProvider(create: (_) => UserProvider()),
         ],
         child: MaterialApp(
-          theme: ThemeData(
-              brightness: Brightness.light,
-              primaryColor: Colors.deepPurple,
-              textButtonTheme: TextButtonThemeData(
-                  style: TextButton.styleFrom(
-                      primary: Colors.teal,
-                      textStyle: const TextStyle(
-                          fontSize: 24, fontWeight: FontWeight.bold)))),
+          theme: TAppTheme.lightTheme,
+          themeMode: ThemeMode.light,
           debugShowCheckedModeBanner: true,
           home: HomePage(),
           onGenerateRoute: ((settings) {
@@ -30,14 +26,20 @@ void main() => runApp(MultiProvider(
               return MaterialPageRoute(
                   builder: ((context) => ProjectListScreen()));
             }
-            if (settings.name == AccountDetailsScreen.routeName) {
+            else if (settings.name == OnBoardingScreen.routeName) {
               return MaterialPageRoute(
-                  builder: ((context) => AccountDetailsScreen("2")));
+                  builder: ((context) => OnBoardingScreen()));
             }
+            else if (settings.name == WelcomeScreen.routeName) {
+              return MaterialPageRoute(
+                  builder: ((context) => WelcomeScreen()));
+            }
+
 
             var uri = Uri.parse(settings.name!);
             if (uri.pathSegments.length == 2 &&
-                "/${uri.pathSegments.first}" == ProjectDetailsScreen.routeName) {
+                "/${uri.pathSegments.first}" ==
+                    ProjectDetailsScreen.routeName) {
               var id = uri.pathSegments[1];
               return MaterialPageRoute(
                   builder: (context) => ProjectDetailsScreen(id));
@@ -54,13 +56,27 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     _userProvider = Provider.of<UserProvider>(context, listen: false);
 
+     Navigator.pushNamed(context, WelcomeScreen.routeName);
+
     return Scaffold(
         appBar: AppBar(
-          title: Text("Project We"),
-          backgroundColor: Colors.deepPurple,
+          title: const Text("Project We"),
         ),
         body: SingleChildScrollView(
-            child: Column(
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  //Image(image: const AssetImage())
+                ],
+              )
+        )));
+  }
+}
+
+
+/*
+
           children: [
             Padding(
                 padding: EdgeInsets.fromLTRB(40, 200, 40, 100),
@@ -126,6 +142,5 @@ class HomePage extends StatelessWidget {
                   ],
                 )))
           ],
-        )));
-  }
-}
+
+          */
