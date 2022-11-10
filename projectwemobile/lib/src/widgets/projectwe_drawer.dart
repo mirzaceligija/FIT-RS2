@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:projectwemobile/main.dart';
+import 'package:projectwemobile/src/features/authentication/screens/splash_screen/splash_screen.dart';
 import 'package:projectwemobile/src/features/projects/screens/project_list_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +28,7 @@ class projectWeDrawer extends StatelessWidget {
             onTap: () {
                Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => SplashScreen()),
                 (Route<dynamic> route) => false,
               );
             },

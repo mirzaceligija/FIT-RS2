@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:projectwemobile/src/features/authentication/screens/splash_screen/splash_screen.dart';
 import 'package:projectwemobile/src/features/projects/controllers/project_provider.dart';
 import 'package:projectwemobile/src/features/projects/controllers/user_provider.dart';
 import 'package:projectwemobile/src/features/authentication/screens/on_boarding/on_boarding_screen.dart';
@@ -11,6 +13,24 @@ import 'package:projectwemobile/src/utils/theme/theme.dart';
 import 'package:projectwemobile/src/utils/utils.dart';
 import 'package:provider/provider.dart';
 
+
+void main() => runApp(const App());
+
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      theme: TAppTheme.lightTheme,
+          themeMode: ThemeMode.light,
+          debugShowCheckedModeBanner: true,
+          home: SplashScreen(),
+    );
+  }
+}
+
+/*
 void main() => runApp(MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => ProjectProvider()),
@@ -20,7 +40,7 @@ void main() => runApp(MultiProvider(
           theme: TAppTheme.lightTheme,
           themeMode: ThemeMode.light,
           debugShowCheckedModeBanner: true,
-          home: HomePage(),
+          home: SplashScreen(),
           onGenerateRoute: ((settings) {
             if (settings.name == ProjectListScreen.routeName) {
               return MaterialPageRoute(
@@ -45,8 +65,11 @@ void main() => runApp(MultiProvider(
                   builder: (context) => ProjectDetailsScreen(id));
             }
           }),
-        )));
 
+        )));
+                  */
+
+/*
 class HomePage extends StatelessWidget {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -74,7 +97,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-
+*/
 /*
 
           children: [

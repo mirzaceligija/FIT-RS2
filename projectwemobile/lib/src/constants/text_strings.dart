@@ -2,6 +2,9 @@
 const String tSignIn = "Sign In";
 const String tSignUp = "Sign Up";
 
+// -- Splash Screen Text
+const String tAppName = ".projectWe/";
+const String tAppTagline = "Become valuable member \nof the community!";
 
 // -- OnBoarding Text
 const String tOnBoardingTitle1 = "Build Awesome Projects";
