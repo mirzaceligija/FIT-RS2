@@ -5,75 +5,65 @@ import 'package:projectwemobile/src/constants/colors.dart';
 import 'package:projectwemobile/src/constants/image_strings.dart';
 import 'package:projectwemobile/src/constants/sizes.dart';
 import 'package:projectwemobile/src/constants/text_strings.dart';
-import 'package:projectwemobile/src/features/authentication/controllers/splash_screen_controller.dart';
+import 'package:projectwemobile/src/widgets/fade_in_animation/animation_design.dart';
+import 'package:projectwemobile/src/widgets/fade_in_animation/fade_in_animation_model.dart';
+import 'package:projectwemobile/src/widgets/fade_in_animation/splash_screen_controller.dart';
 
 class SplashScreen extends StatelessWidget {
   SplashScreen({Key? key}) : super(key: key);
 
-  final splashScreenController = Get.put(SplashScreenController());
-
   @override
   Widget build(BuildContext context) {
-    splashScreenController.startAnimation();
+    final controller = Get.put(FadeInAnimationController());
+    controller.startSplashAnimation();
+
     return Scaffold(
       body: Stack(
         children: [
-          Obx(
-            () => AnimatedPositioned(
-                top: splashScreenController.animate.value ? 0 : -30,
-                left: splashScreenController.animate.value ? 0 : -30,
-                duration: const Duration(milliseconds: 1600),
-                child: Image(image: AssetImage(tSplashScreenIcon))),
+          TFadeInAnimation(
+              durationInMs: 1600,
+              animate: TAnimatePosition(
+                  topAfter: 0, topBefore: -30, leftAfter: 0, leftBefore: -30),
+              child: Image(image: AssetImage(tSplashScreenIcon))),
+          TFadeInAnimation(
+            durationInMs: 2000,
+            animate: TAnimatePosition(
+                topAfter: 80,
+                topBefore: 80,
+                leftAfter: tDefaultSize,
+                leftBefore: -80),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  tAppName,
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                Text(tAppTagline, style: Theme.of(context).textTheme.headline2)
+              ],
+            ),
           ),
-          Obx(
-            () => AnimatedPositioned(
-                duration: const Duration(milliseconds: 1600),
-                top: 80,
-                left: splashScreenController.animate.value ? tDefaultSize : -80,
-                child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 1600),
-                  opacity: splashScreenController.animate.value ? 1 : 0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        tAppName,
-                        style: Theme.of(context).textTheme.headline3,
-                      ),
-                      Text(tAppTagline,
-                          style: Theme.of(context).textTheme.headline2)
-                    ],
-                  ),
-                )),
-          ),
-          Obx(
-            () => AnimatedPositioned(
-                duration: const Duration(milliseconds: 2400),
-                bottom: splashScreenController.animate.value ? 200 : 0,
-                child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 2000),
-                    opacity: splashScreenController.animate.value ? 1 : 0,
-                    child: Image(
-                      image: AssetImage(tSplashScreenImage),
-                      height: 400,
-                    ))),
-          ),
-          Obx(
-            () => AnimatedPositioned(
-                duration: const Duration(milliseconds: 2000),
-                bottom: splashScreenController.animate.value ? 60 : 0,
-                right: tDefaultSize,
-                child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 2000),
-                  opacity: splashScreenController.animate.value ? 1 : 0,
-                  child: Container(
-                    width: tSplashScreenContainerSize,
-                    height: tSplashScreenContainerSize,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: tPrimaryColor),
-                  ),
-                )),
+          TFadeInAnimation(
+              durationInMs: 2400,
+              animate: TAnimatePosition(bottomAfter: 200, bottomBefore: 0),
+              child: Image(
+                image: AssetImage(tSplashScreenImage),
+                height: 400,
+              )),
+          TFadeInAnimation(
+            durationInMs: 2400,
+            animate: TAnimatePosition(
+                bottomAfter: 60,
+                bottomBefore: 0,
+                rightAfter: tDefaultSize,
+                rightBefore: tDefaultSize),
+            child: Container(
+              width: tSplashScreenContainerSize,
+              height: tSplashScreenContainerSize,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  color: tPrimaryColor),
+            ),
           ),
         ],
       ),
