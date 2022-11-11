@@ -23,3 +23,13 @@ const String tOnBoardingCounter3 = "3/3";
 // -- Welcome Screen Text
 const String tWelcomeTitle = "Build Awesome Projects";
 const String tWelcomeSubTitle = "Lorem ispum dolor sit amet, consectetur adipsicing elit";
+
+// -- Sign In Screen Text
+const String tSignInTitle = "Welcome Back,";
+const String tSignInSubtitle = "Make it work, make it right, make it fast.";
+const String tAlreadyHaveAnAccount = "Already have an account?";
+const String tDontHaveAnAccount = "Don't have an account yet? ";
+
+const String tEmail = "Email";
+const String tPassword = "Password";
+const String tForgetPassword = "Forgot Password?";
