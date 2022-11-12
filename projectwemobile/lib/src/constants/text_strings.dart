@@ -1,9 +1,14 @@
 // -- Generic Text
 const String tSignIn = "Sign In";
 const String tSignUp = "Sign Up";
+const String tEmail = "Email";
+const String tPassword = "Password";
+const String tForgetPassword = "Forgot Password?";
+const String tFullName = "Full Name";
+const String tPhoneNo = "Phone Number";
 
 // -- Splash Screen Text
-const String tAppName = ".projectWe/";
+const String tAppName = ".ProjectWe";
 const String tAppTagline = "Become valuable member \nof the community!";
 
 // -- OnBoarding Text
@@ -27,9 +32,20 @@ const String tWelcomeSubTitle = "Lorem ispum dolor sit amet, consectetur adipsic
 // -- Sign In Screen Text
 const String tSignInTitle = "Welcome Back,";
 const String tSignInSubtitle = "Make it work, make it right, make it fast.";
-const String tAlreadyHaveAnAccount = "Already have an account?";
 const String tDontHaveAnAccount = "Don't have an account yet? ";
 
-const String tEmail = "Email";
-const String tPassword = "Password";
-const String tForgetPassword = "Forgot Password?";
+// -- Sign Up Screen Text
+const String tSignUpTitle = "Get On Board!";
+const String tSignUpSubtitle = "Create your profile to start your journey.";
+const String tAlreadyHaveAnAccount = "Already have an account? ";
+
+
+// -- Dashboard Screen Text
+const String tDashboardTitle = "Hello, ";
+const String tDashboardHeading = "Explore Projects";
+const String tDashboardSearch = "Search...";
+const String tDashboardBannerTitle1 = "Android for Beginners";
+const String tDashboardBannerTitle2 = "JAVA";
+const String tDashboardBannerSubtitle = "10 lessons";
+const String tDashboardButton = "View All";
+const String tDashboardTopProjects = "Your Projects";

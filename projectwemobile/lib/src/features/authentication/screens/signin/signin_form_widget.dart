@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:projectwemobile/src/constants/sizes.dart';
 import 'package:projectwemobile/src/constants/text_strings.dart';
+import 'package:projectwemobile/src/features/core/screens/dashboard/widgets/dashboard.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({
@@ -45,7 +48,7 @@ class SignInForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => Dashboard()),
                 child: Text(tSignIn.toUpperCase()),
               ),
             ),

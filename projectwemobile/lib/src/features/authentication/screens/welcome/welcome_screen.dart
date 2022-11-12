@@ -7,6 +7,7 @@ import 'package:projectwemobile/src/constants/image_strings.dart';
 import 'package:projectwemobile/src/constants/sizes.dart';
 import 'package:projectwemobile/src/constants/text_strings.dart';
 import 'package:projectwemobile/src/features/authentication/screens/signin/signin_screen.dart';
+import 'package:projectwemobile/src/features/authentication/screens/signup/signup_screen.dart';
 import 'package:projectwemobile/src/widgets/fade_in_animation/animation_design.dart';
 import 'package:projectwemobile/src/widgets/fade_in_animation/fade_in_animation_model.dart';
 import 'package:projectwemobile/src/widgets/fade_in_animation/splash_screen_controller.dart';
@@ -63,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
                     SizedBox(width: 10.0),
                     Expanded(
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: ()  => Get.to(() => SignUpScreen()),
                             child: Text(tSignUp.toUpperCase()))),
                   ],
                 )

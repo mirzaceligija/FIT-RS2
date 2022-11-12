@@ -13,7 +13,6 @@ import 'package:projectwemobile/src/utils/theme/theme.dart';
 import 'package:projectwemobile/src/utils/utils.dart';
 import 'package:provider/provider.dart';
 
-
 void main() => runApp(const App());
 
 class App extends StatelessWidget {
@@ -23,9 +22,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: TAppTheme.lightTheme,
-          themeMode: ThemeMode.light,
-          debugShowCheckedModeBanner: true,
-          home: SplashScreen(),
+      themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: true,
+      defaultTransition: Transition.leftToRightWithFade,
+      transitionDuration: const Duration(milliseconds: 500),
+      home: SplashScreen(),
     );
   }
 }

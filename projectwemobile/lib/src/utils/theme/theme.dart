@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:projectwemobile/src/utils/theme/widget_themes/elevated_button_theme.dart';
 import 'package:projectwemobile/src/utils/theme/widget_themes/outlined_button_theme.dart';
 import 'package:projectwemobile/src/utils/theme/widget_themes/text_theme.dart';
+import 'package:projectwemobile/src/utils/theme/widget_themes/text_theme_field.dart';
 
 class TAppTheme {
 
@@ -13,6 +14,7 @@ class TAppTheme {
     elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: TOutlinedButtonTheme.lightOutlinedButtonTheme,
     textTheme: TTextTheme.lightTextTheme,
+    inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme,
     primarySwatch: MaterialColor(0xFFFFE200, <int, Color>{
       50: Color(0x1AFFE200),
       100: Color(0x33FFE200),
