@@ -21,11 +21,6 @@ class SplashScreen extends StatelessWidget {
       body: Stack(
         children: [
           TFadeInAnimation(
-              durationInMs: 1600,
-              animate: TAnimatePosition(
-                  topAfter: 0, topBefore: -30, leftAfter: 0, leftBefore: -30),
-              child: Image(image: AssetImage(tSplashScreenIcon))),
-          TFadeInAnimation(
             durationInMs: 2000,
             animate: TAnimatePosition(
                 topAfter: 80,
@@ -39,7 +34,7 @@ class SplashScreen extends StatelessWidget {
                   tAppName,
                   style: Theme.of(context).textTheme.headline3,
                 ),
-                Text(tAppTagline, style: Theme.of(context).textTheme.headline2)
+                Text(tAppTagline, style: Theme.of(context).textTheme.headline4)
               ],
             ),
           ),
@@ -48,7 +43,7 @@ class SplashScreen extends StatelessWidget {
               animate: TAnimatePosition(bottomAfter: 200, bottomBefore: 0),
               child: Image(
                 image: AssetImage(tSplashScreenImage),
-                height: 400,
+                height: 300,
               )),
           TFadeInAnimation(
             durationInMs: 2400,
