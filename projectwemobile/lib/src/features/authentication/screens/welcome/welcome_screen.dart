@@ -42,7 +42,7 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 Image(
                   image: AssetImage(tWelcomeScreenImage),
-                  height: height * 0.6,
+                  height: height * 0.4,
                 ),
                 Column(
                   children: [

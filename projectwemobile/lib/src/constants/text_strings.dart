@@ -26,8 +26,8 @@ const String tOnBoardingCounter3 = "3/3";
 
 
 // -- Welcome Screen Text
-const String tWelcomeTitle = "Build Awesome Projects";
-const String tWelcomeSubTitle = "Lorem ispum dolor sit amet, consectetur adipsicing elit";
+const String tWelcomeTitle = "Join Our Community";
+const String tWelcomeSubTitle = "Start by creating your account. Share your passion project and get supported";
 
 // -- Sign In Screen Text
 const String tSignInTitle = "Welcome Back,";
