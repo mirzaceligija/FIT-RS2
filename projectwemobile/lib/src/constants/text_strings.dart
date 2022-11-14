@@ -12,13 +12,13 @@ const String tAppName = ".ProjectWe";
 const String tAppTagline = "Become valuable member \nof the community!";
 
 // -- OnBoarding Text
-const String tOnBoardingTitle1 = "Build Awesome Projects";
+const String tOnBoardingTitle1 = "Share Your Project";
 const String tOnBoardingTitle2 = "Track Your Progress";
 const String tOnBoardingTitle3 = "Get Supported";
 
-const String tOnBoardingSubtitle1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore";
-const String tOnBoardingSubtitle2 = "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat";
-const String tOnBoardingSubtitle3 = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,";
+const String tOnBoardingSubtitle1 = "Share your passion project with the rest of the community. Add details and objectives.";
+const String tOnBoardingSubtitle2 = "Define project details, objectives and budget structure and manage your progress.";
+const String tOnBoardingSubtitle3 = "Get supported by the community and validate your idea.";
 
 const String tOnBoardingCounter1 = "1/3";
 const String tOnBoardingCounter2 = "2/3";

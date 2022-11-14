@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
+import 'package:projectwemobile/src/features/authentication/screens/welcome/welcome_screen.dart';
+import 'package:projectwemobile/src/features/core/screens/dashboard/widgets/dashboard.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/image_strings.dart';
@@ -45,6 +47,9 @@ class OnBoardingController extends GetxController {
   skip() => controller.jumpToPage(page: 2);
 
   animateToNextSlide() {
+    if(controller.currentPage == 2) {
+       Get.offAll(() => const Dashboard());
+    }
     int nextPage = controller.currentPage + 1;
     controller.animateToPage(page: nextPage);
   }
