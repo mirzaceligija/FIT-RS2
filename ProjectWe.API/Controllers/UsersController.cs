@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWe.Model.Requests;
 using ProjectWe.Model.SearchObjects;
@@ -12,6 +13,12 @@ namespace ProjectWe.Controllers
 
         public UsersController(IUsersService service) : base(service)
         {
+        }
+
+        [AllowAnonymous]
+        public override Model.User Insert([FromBody] UserInsertRequest insert)
+        {
+            return base.Insert(insert);
         }
     }
 }

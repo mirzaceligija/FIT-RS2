@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:flutter/foundation.dart';
-import 'package:projectwemobile/src/features/projects/controllers/base_provider.dart';
+import 'package:projectwemobile/src/features/core/providers/base_provider.dart';
 import 'package:projectwemobile/src/features/projects/model/project.dart';
 
 class ProjectProvider extends BaseProvider<Project> {

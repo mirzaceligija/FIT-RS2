@@ -15,7 +15,7 @@ class SignInHeaderWidget extends StatelessWidget {
       children: [
         Image(
             image: const AssetImage(tWelcomeScreenImage),
-            height: size.height * 0.2),
+            height: size.height * 0.4),
         Text(tSignInTitle, style: Theme.of(context).textTheme.headline1),
         Text(tSignInSubtitle, style: Theme.of(context).textTheme.bodyText1),
       ],

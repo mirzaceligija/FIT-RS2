@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:projectwemobile/src/constants/text_strings.dart';
+import 'package:projectwemobile/src/features/authentication/screens/signin/signin_screen.dart';
 
 class SignUpFooterWidget extends StatelessWidget {
   const SignUpFooterWidget({
@@ -13,7 +16,7 @@ class SignUpFooterWidget extends StatelessWidget {
       children: [
         const Text("OR"),
         TextButton(
-          onPressed: () {},
+          onPressed: () => Get.to(() => SignInScreen()),
           child: Text.rich(TextSpan(children: [
             TextSpan(
               text: tAlreadyHaveAnAccount,

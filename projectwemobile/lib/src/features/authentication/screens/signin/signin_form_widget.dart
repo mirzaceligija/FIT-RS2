@@ -4,16 +4,25 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:projectwemobile/src/constants/sizes.dart';
 import 'package:projectwemobile/src/constants/text_strings.dart';
+import 'package:projectwemobile/src/features/authentication/model/user.dart';
+import 'package:projectwemobile/src/features/authentication/providers/user_provider.dart';
 import 'package:projectwemobile/src/features/authentication/screens/on_boarding/on_boarding_screen.dart';
 import 'package:projectwemobile/src/features/core/screens/dashboard/widgets/dashboard.dart';
+import 'package:projectwemobile/src/features/projects/screens/project_list_screen.dart';
+import 'package:projectwemobile/src/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class SignInForm extends StatelessWidget {
-  const SignInForm({
-    Key? key,
-  }) : super(key: key);
+  TextEditingController _usernameController =
+      TextEditingController(text: "manager");
+  TextEditingController _passwordController =
+      TextEditingController(text: "test");
+  late UserProvider _userProvider;
 
   @override
   Widget build(BuildContext context) {
+    _userProvider = Provider.of<UserProvider>(context, listen: false);
+
     return Form(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: tFormHeight - 10),
@@ -21,14 +30,19 @@ class SignInForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
+              controller: _usernameController,
               decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.person_outline_outlined),
-                  labelText: tEmail,
-                  hintText: tEmail,
+                  labelText: tUsername,
+                  hintText: tUsername,
                   border: OutlineInputBorder()),
             ),
             const SizedBox(height: tFormHeight - 20),
             TextFormField(
+              controller: _passwordController,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.fingerprint),
                 labelText: tPassword,
@@ -49,7 +63,30 @@ class SignInForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.to(() => OnBoardingScreen()),
+                onPressed: () async {
+                  try {
+                    Authorization.username = _usernameController.text;
+                    Authorization.password = _passwordController.text;
+
+                    await _userProvider.getList();
+                    Get.to(() => Dashboard());
+                  } catch (e) {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              title: Text("Error"),
+                              content: Text(e.toString()),
+                              actions: [
+                                TextButton(
+                                  child: Text("Ok"),
+                                  onPressed: () => Navigator.pop(context),
+                                )
+                              ],
+                            ));
+                  }
+                },
+
+                // () =>,
                 child: Text(tSignIn.toUpperCase()),
               ),
             ),

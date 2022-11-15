@@ -28,7 +28,7 @@ namespace ProjectWe.Services
 
             var entity = base.Insert(insert);
 
-            List<int> defaultRoles = new List<int> { 1 };
+            List<int> defaultRoles = new List<int> { 2 }; // 2 stands for manager
 
             foreach (var roleId in defaultRoles)
             {
@@ -37,6 +37,7 @@ namespace ProjectWe.Services
                 role.RoleId = roleId;
                 role.UserId = entity.UserId;
 
+                role.CreatedAt = DateTime.Now;
                 role.LastModified = DateTime.Now;
 
                 Context.UserRoles.Add(role);
@@ -50,6 +51,8 @@ namespace ProjectWe.Services
         public override void BeforeInsert(UserInsertRequest insert, Database.User entity)
         {
             var salt = GenerateSalt();
+            entity.CreatedAt = DateTime.Now;
+            entity.LastModified = DateTime.Now;
             entity.PasswordSalt = salt;
             entity.PasswordHash = GenerateHash(salt, insert.Password);
             base.BeforeInsert(insert, entity);
