@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:projectwemobile/src/constants/text_strings.dart';
+import 'package:projectwemobile/src/features/core/screens/dashboard/widgets/dashboard.dart';
 import 'package:projectwemobile/src/features/projects/screens/project_list_screen.dart';
 import 'package:projectwemobile/src/widgets/projectwe_drawer.dart';
 
@@ -20,8 +22,12 @@ class _MasterScreenWidgetState extends State<MasterScreenWidget> {
       currentIndex = index;
     });
     if (currentIndex == 0) {
-      Navigator.pushNamed(context, ProjectListScreen.routeName);
+      Navigator.pushNamed(context, Dashboard.routeName);
     } else if (currentIndex == 1) {
+      Navigator.pushNamed(context, ProjectListScreen.routeName);
+    } else if (currentIndex == 2) {
+      Navigator.pushNamed(context, ProjectListScreen.routeName);
+    } else if (currentIndex == 3) {
       Navigator.pushNamed(context, ProjectListScreen.routeName);
     }
   }
@@ -29,23 +35,39 @@ class _MasterScreenWidgetState extends State<MasterScreenWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: Text(tAppName, style: Theme.of(context).textTheme.headline4),
+        centerTitle: true,
+      ),
       drawer: projectWeDrawer(),
       body: SafeArea(
         child: widget.child!,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: const TextStyle(color: Colors.black54),
+        unselectedItemColor: Colors.black87,
+        unselectedLabelStyle: const TextStyle(color: Colors.black45),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Dashboard',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.assignment_outlined),
+            label: 'Projects',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.auto_awesome),
+            label: 'My Projects',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_rounded),
+            label: 'Account',
           ),
         ],
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Theme.of(context).primaryColor,
         currentIndex: currentIndex,
         onTap: _onItemTapped,
       ),
