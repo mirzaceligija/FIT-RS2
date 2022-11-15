@@ -1,6 +1,7 @@
 // -- Generic Text
 const String tSignIn = "Sign In";
 const String tSignUp = "Sign Up";
+const String tUsername = "Username";
 const String tEmail = "Email";
 const String tPassword = "Password";
 const String tForgetPassword = "Forgot Password?";
