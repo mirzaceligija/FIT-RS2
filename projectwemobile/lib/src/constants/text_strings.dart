@@ -4,8 +4,10 @@ const String tSignUp = "Sign Up";
 const String tUsername = "Username";
 const String tEmail = "Email";
 const String tPassword = "Password";
+const String tConfirmPassword = "Confirm Password";
 const String tForgetPassword = "Forgot Password?";
-const String tFullName = "Full Name";
+const String tFirstName = "First Name";
+const String tLastName = "Last Name";
 const String tPhoneNo = "Phone Number";
 
 // -- Splash Screen Text

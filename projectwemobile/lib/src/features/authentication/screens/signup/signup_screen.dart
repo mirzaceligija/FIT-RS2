@@ -8,6 +8,7 @@ import 'package:projectwemobile/src/features/authentication/screens/signup/signu
 import 'package:projectwemobile/src/features/authentication/screens/signup/signup_header_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
+  static const String routeName = "/signup";
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(tDefaultSize),
             child: Column(
-              children: const [
+              children: [
                 FormHeaderWidget(
                   image: tWelcomeScreenImage,
                   title: tSignUpTitle,
