@@ -21,7 +21,7 @@ class SignInScreen extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(tDefaultSize),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Column(children: [
             SignInHeaderWidget(),
             SignInForm(),
             SignInFooterWidget(),

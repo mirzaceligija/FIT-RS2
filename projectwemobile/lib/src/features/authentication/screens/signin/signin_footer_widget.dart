@@ -14,20 +14,18 @@ class SignInFooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text("OR"),
         const SizedBox(height: tFormHeight - 20),
         TextButton(
           onPressed: () => Get.to(() => SignUpScreen()),
-          child: Text.rich(
+          child: Text.rich(TextSpan(children: [
             TextSpan(
-                text: tDontHaveAnAccount,
-                style: Theme.of(context).textTheme.bodyText1,
-                children: const [
-                  TextSpan(text: tSignUp, style: TextStyle(color: Colors.blue))
-                ]),
-          ),
+              text: tDontHaveAnAccount,
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            TextSpan(text: tSignUp, style: TextStyle(color: Colors.blue))
+          ])),
         ),
       ],
     );
